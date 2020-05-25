@@ -103,7 +103,7 @@ def combine_files(files):
     with open("translations.pt", 'w') as f:
         f.writelines(result)
 
-def rerank_files(files, threshold=1):
+def consensus_files(files, threshold=1):
     file_names = files.split(',')
 
     translations = []
@@ -143,7 +143,7 @@ if __name__ == '__main__':
     parser.add_argument("--split", action='store_true', default=False)
     parser.add_argument("--merge", action='store_true', default=False)
     parser.add_argument("--combine", action='store_true', default=False)
-    parser.add_argument("--rerank", action='store_true', default=False)
+    parser.add_argument("--consensus", action='store_true', default=False)
     parser.add_argument("--n", type=int, default=1)
 
     args = parser.parse_args()
@@ -152,8 +152,8 @@ if __name__ == '__main__':
         remove_duplicate(args.file, args.n)
     elif args.split:
         split_test_data(args.file)
-    elif args.rerank:
-        rerank_files(args.file, args.n)
+    elif args.consensus:
+        consensus_files(args.file, args.n)
     elif args.merge:
         merge_translation(args.file, args.hyp)
     elif args.combine:
