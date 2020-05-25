@@ -233,7 +233,7 @@ if __name__ == '__main__':
     assert args.extract ^ args.eval == True
     
     if args.extract:
-        extract_data_k(args.file, MAX_GOLDS=1, dev_size=500)
+        extract_data_k(args.file, MAX_GOLDS=10, dev_size=500)
     elif args.eval and args.empty_line_split:
         evaluate_line_split(args.hyp, args.ref)
     else:
